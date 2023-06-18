@@ -30,7 +30,9 @@ public class RecipeService {
         return RecipeResponse.convertToResponse(recipeRepo.findById(idOfRecipe).get());
     }
 
-    public void deleteRecipe(Integer recipeId) {
+    public String deleteRecipe(Integer recipeId) {
         recipeRepo.deleteById(recipeId);
+        return "Successfully Deleted The Recipe";
+
     }
 }

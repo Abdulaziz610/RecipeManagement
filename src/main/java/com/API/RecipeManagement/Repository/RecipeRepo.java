@@ -5,8 +5,11 @@ import com.API.RecipeManagement.Models.RecipesModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface RecipeRepo extends JpaRepository<RecipesModel, Integer> {
 
 
+    List<RecipesModel> findAllByNameContainingIgnoreCase(String keywords);
 }

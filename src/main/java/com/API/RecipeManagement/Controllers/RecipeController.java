@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 @RestController
 @RequestMapping(value = "recipe")
 public class RecipeController {
@@ -28,6 +32,14 @@ public class RecipeController {
         return recipeService.getRecipeById(idOfRecipe);
     }
 
+
+    @GetMapping("/api/recipes/search")
+    public Map<String, List<RecipeResponse>> searchRecipesByKeywords(@RequestParam String keywords) {
+        List<RecipeResponse> matchingRecipes = recipeService.searchRecipesByKeywords(keywords);
+        Map<String, List<RecipeResponse>> response = new HashMap<>();
+        response.put("recipes", matchingRecipes);
+        return response;
+    }
 
     @DeleteMapping("/api/recipes/{recipeId}")
     public String deleteRecipe(@PathVariable Integer recipeId) {

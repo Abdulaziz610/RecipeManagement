@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class RecipeService {
@@ -29,6 +31,14 @@ public class RecipeService {
     public RecipeResponse getRecipeById(Integer idOfRecipe) {
         return RecipeResponse.convertToResponse(recipeRepo.findById(idOfRecipe).get());
     }
+
+    public List<RecipeResponse> searchRecipesByKeywords(String keywords) {
+        List<RecipesModel> matchingRecipes = recipeRepo.findAllByNameContainingIgnoreCase(keywords);
+        return matchingRecipes.stream()
+                .map(RecipeResponse::convertToResponse)
+                .collect(Collectors.toList());
+    }
+
 
     public String deleteRecipe(Integer recipeId) {
         recipeRepo.deleteById(recipeId);

@@ -20,6 +20,7 @@ public class RecipeService {
         newRecipe = RecipeRequest.convertToEntity(newRecipe, recipeRequest);
         newRecipe.setNewDate(new Date());
         newRecipe.setIsActive(Boolean.TRUE);
+        recipeRepo.save(newRecipe);
 
         return "Successfully Saved The Recipe";
 

@@ -7,6 +7,8 @@ import com.API.RecipeManagement.Services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.persistence.criteria.CriteriaBuilder;
+
 @RestController
 @RequestMapping(value = "recipe")
 public class RecipeController {
@@ -20,6 +22,9 @@ public class RecipeController {
     }
 
     @GetMapping(value = "/api/recipes")
-
+    public RecipeResponse getRecipeById(@RequestParam Integer idOfRecipe) {
+        return recipeService.getRecipeById(idOfRecipe);
     }
+
+
 }

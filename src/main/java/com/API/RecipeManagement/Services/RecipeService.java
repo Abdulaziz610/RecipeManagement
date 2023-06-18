@@ -29,4 +29,8 @@ public class RecipeService {
     public RecipeResponse getRecipeById(Integer idOfRecipe) {
         return RecipeResponse.convertToResponse(recipeRepo.findById(idOfRecipe).get());
     }
+
+    public void deleteRecipe(Integer recipeId) {
+        recipeRepo.deleteById(recipeId);
+    }
 }

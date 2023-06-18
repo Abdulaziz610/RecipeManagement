@@ -22,9 +22,8 @@ public class RecipeRequest {
     public static RecipesModel convertToEntity(RecipesModel entity, RecipeRequest requestForRecipe) {
         entity.setName(requestForRecipe.getRecipeName());
         entity.setCookingTime(requestForRecipe.getRecipeCookingTime());
-        entity.setInstruction(requestForRecipe.getRecipeInstructions());
-        entity.setIngredient(requestForRecipe.getRecipeIngredients());
-
+        entity.setInstructions(requestForRecipe.getRecipeInstructions());
+        entity.setIngredients(requestForRecipe.getRecipeIngredients());
         return entity;
 
     }

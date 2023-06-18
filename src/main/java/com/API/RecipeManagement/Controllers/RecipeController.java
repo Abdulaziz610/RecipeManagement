@@ -5,6 +5,7 @@ import com.API.RecipeManagement.RequestObjects.RecipeRequest;
 import com.API.RecipeManagement.ResponseObjects.RecipeResponse;
 import com.API.RecipeManagement.Services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -26,5 +27,11 @@ public class RecipeController {
         return recipeService.getRecipeById(idOfRecipe);
     }
 
+
+    @DeleteMapping("/api/recipes/{recipeId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteRecipe(@PathVariable Integer recipeId) {
+        recipeService.deleteRecipe(recipeId);
+    }
 
 }

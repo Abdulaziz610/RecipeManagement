@@ -4,6 +4,7 @@ package com.API.RecipeManagement.Services;
 import com.API.RecipeManagement.Models.RecipesModel;
 import com.API.RecipeManagement.Repository.RecipeRepo;
 import com.API.RecipeManagement.RequestObjects.RecipeRequest;
+import com.API.RecipeManagement.ResponseObjects.RecipeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,6 +24,9 @@ public class RecipeService {
         recipeRepo.save(newRecipe);
 
         return "Successfully Saved The Recipe";
+    }
+
+    public RecipeResponse getRecipeById(Integer idOfRecipe){
 
     }
 }

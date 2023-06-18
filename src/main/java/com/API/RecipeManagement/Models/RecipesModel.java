@@ -16,7 +16,7 @@ public class RecipesModel {
     @GeneratedValue(strategy = GenerationType.AUTO)
 
     Integer id;
-    String recipeName;
+    String name;
     List<String> ingredient;
     String instruction;
     Integer cookingTime;

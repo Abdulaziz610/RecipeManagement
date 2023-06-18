@@ -4,6 +4,7 @@ package com.API.RecipeManagement.Models;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -18,6 +19,9 @@ public class RecipesModel {
     List<String> ingredient;
     String instruction;
     Integer cookingTime;
+    Date newDate;
+    Date updateDate;
+    Boolean isActive;
 
 
 }

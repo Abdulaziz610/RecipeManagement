@@ -1,6 +1,7 @@
 package com.API.RecipeManagement.Controllers;
 
 
+import com.API.RecipeManagement.Models.RecipesModel;
 import com.API.RecipeManagement.RequestObjects.RecipeRequest;
 import com.API.RecipeManagement.ResponseObjects.RecipeResponse;
 import com.API.RecipeManagement.Services.RecipeService;
@@ -20,6 +21,8 @@ public class RecipeController {
         return "Successfully Saved The Recipe";
     }
 
+
+
     @GetMapping(value = "/api/recipes")
     public RecipeResponse getRecipeById(@RequestParam Integer idOfRecipe) {
         return recipeService.getRecipeById(idOfRecipe);
@@ -27,7 +30,6 @@ public class RecipeController {
 
 
     @DeleteMapping("/api/recipes/{recipeId}")
-    @ResponseStatus(HttpStatus.NO_CONTENT)
     public String deleteRecipe(@PathVariable Integer recipeId) {
         recipeService.deleteRecipe(recipeId);
         return "Successfully Delete The Recipe";

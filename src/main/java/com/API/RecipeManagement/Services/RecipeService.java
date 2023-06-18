@@ -7,16 +7,20 @@ import com.API.RecipeManagement.RequestObjects.RecipeRequest;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class RecipeService {
 
     @Autowired
-    RecipeRepo  recipeRepo;
+    RecipeRepo recipeRepo;
 
-    public String savingRecipe(RecipeRequest recipeRequest){
+    public String savingRecipe(RecipeRequest recipeRequest) {
         RecipesModel newRecipe = new RecipesModel();
-        newRecipe= RecipeRequest.convertToEntity(newRecipe,recipeRequest);
-        return  "Successfully Saved The Recipe";
+        newRecipe = RecipeRequest.convertToEntity(newRecipe, recipeRequest);
+        newRecipe.setNewDate(new Date());
+
+        return "Successfully Saved The Recipe";
 
     }
 }

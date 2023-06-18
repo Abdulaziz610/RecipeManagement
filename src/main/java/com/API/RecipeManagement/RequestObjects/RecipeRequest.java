@@ -8,28 +8,24 @@ import lombok.Setter;
 import java.util.List;
 
 
-
 @Data
 @Getter
 @Setter
 
 public class RecipeRequest {
-String  recipeName;
-List<String> recipeIngredients;
-String recipeInstructions;
-Integer recipeCookingTime;
+    String recipeName;
+    List<String> recipeIngredients;
+    String recipeInstructions;
+    Integer recipeCookingTime;
 
 
-    public static RecipesModel convertToEntity(RecipesModel entity, RecipeRequest request){
+    public static RecipesModel convertToEntity(RecipesModel entity, RecipeRequest requestForRecipe) {
+        entity.setName(requestForRecipe.getRecipeName());
+        entity.setCookingTime(requestForRecipe.getRecipeCookingTime());
+        entity.setInstruction(requestForRecipe.getRecipeInstructions());
+        entity.setIngredient(requestForRecipe.getRecipeIngredients());
 
-
+        return entity;
 
     }
-
-
-
-
-
-
-
 }

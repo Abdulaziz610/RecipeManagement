@@ -27,6 +27,6 @@ public class RecipeService {
     }
 
     public RecipeResponse getRecipeById(Integer idOfRecipe){
-
+    return RecipeResponse.convertToResponse(recipeRepo.findById(idOfRecipe).get());
     }
 }

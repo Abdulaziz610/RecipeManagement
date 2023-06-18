@@ -12,12 +12,12 @@ import java.util.List;
 @Builder
 public class RecipeResponse {
     Integer id;
-    String  recipeName;
+    String recipeName;
     List<String> recipeIngredients;
     String recipeInstructions;
     Integer recipeCookingTime;
 
-    public static RecipeResponse convertToResponse(RecipesModel entity){
+    public static RecipeResponse convertToResponse(RecipesModel entity) {
         return RecipeResponse.builder()
                 .id(entity.getId())
                 .recipeIngredients(entity.getIngredient())

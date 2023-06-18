@@ -26,7 +26,7 @@ public class RecipeService {
         return "Successfully Saved The Recipe";
     }
 
-    public RecipeResponse getRecipeById(Integer idOfRecipe){
-    return RecipeResponse.convertToResponse(recipeRepo.findById(idOfRecipe).get());
+    public RecipeResponse getRecipeById(Integer idOfRecipe) {
+        return RecipeResponse.convertToResponse(recipeRepo.findById(idOfRecipe).get());
     }
 }

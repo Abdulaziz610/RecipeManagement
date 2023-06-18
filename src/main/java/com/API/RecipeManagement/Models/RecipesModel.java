@@ -17,7 +17,6 @@ public class RecipesModel {
     String name;
     @ElementCollection
     List<String> ingredients;
-    List<RatingModel> ratings;
     String instructions;
     Integer cookingTime;
     Date newDate;

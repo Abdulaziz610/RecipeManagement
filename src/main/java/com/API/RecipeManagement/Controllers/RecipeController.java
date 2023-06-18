@@ -1,12 +1,10 @@
 package com.API.RecipeManagement.Controllers;
 
 
-import com.API.RecipeManagement.Models.RecipesModel;
 import com.API.RecipeManagement.RequestObjects.RecipeRequest;
 import com.API.RecipeManagement.ResponseObjects.RecipeResponse;
 import com.API.RecipeManagement.Services.RecipeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
@@ -26,7 +24,6 @@ public class RecipeController {
     }
 
 
-
     @GetMapping(value = "/api/recipes")
     public RecipeResponse getRecipeById(@RequestParam Integer idOfRecipe) {
         return recipeService.getRecipeById(idOfRecipe);
@@ -41,10 +38,10 @@ public class RecipeController {
         return response;
     }
 
+
     @DeleteMapping("/api/recipes/{recipeId}")
     public String deleteRecipe(@PathVariable Integer recipeId) {
         recipeService.deleteRecipe(recipeId);
         return "Successfully Delete The Recipe";
     }
-
 }

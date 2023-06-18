@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.criteria.CriteriaBuilder;
-
 @RestController
 @RequestMapping(value = "recipe")
 public class RecipeController {
@@ -30,8 +28,9 @@ public class RecipeController {
 
     @DeleteMapping("/api/recipes/{recipeId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteRecipe(@PathVariable Integer recipeId) {
+    public String deleteRecipe(@PathVariable Integer recipeId) {
         recipeService.deleteRecipe(recipeId);
+        return "Successfully Delete The Recipe";
     }
 
 }

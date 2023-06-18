@@ -19,16 +19,12 @@ public class RecipeResponse {
 
     public static RecipeResponse convertToResponse(RecipesModel entity){
         return RecipeResponse.builder()
-                .id(entity.getId());
+                .id(entity.getId())
+                .recipeIngredients(entity.getIngredient())
+                .recipeInstructions(entity.getInstruction())
+                .recipeCookingTime(entity.getCookingTime())
+                .build();
 
     }
-
-
-
-
-
-
-
-
 
 }

@@ -3,6 +3,7 @@ package com.API.RecipeManagement.Controllers;
 
 import com.API.RecipeManagement.Models.RecipesModel;
 import com.API.RecipeManagement.Repository.RecipeRepo;
+import com.API.RecipeManagement.RequestObjects.RatingRequest;
 import com.API.RecipeManagement.RequestObjects.RecipeRequest;
 import com.API.RecipeManagement.ResponseObjects.RecipeResponse;
 import com.API.RecipeManagement.Services.RecipeService;
@@ -78,4 +79,10 @@ public class RecipeController {
         recipeService.deleteRecipe(recipeId);
         return "Successfully Delete The Recipe";
     }
+
+    @PostMapping(value = "/api/recipes/{recipeId}/rating")
+    public ResponseEntity<String> rateRecipe(@PathVariable Integer recipeId, @RequestBody RatingRequest ratingRequest) {
+        return recipeService.rateRecipe(recipeId, ratingRequest);
+    }
+
 }

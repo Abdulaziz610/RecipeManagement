@@ -25,6 +25,5 @@ public class RecipesModel {
     Date newDate;
     Date updateDate;
     Boolean isActive;
-
-
+    Integer rating;
 }

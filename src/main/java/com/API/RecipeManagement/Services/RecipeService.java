@@ -3,13 +3,16 @@ package com.API.RecipeManagement.Services;
 
 import com.API.RecipeManagement.Models.RecipesModel;
 import com.API.RecipeManagement.Repository.RecipeRepo;
+import com.API.RecipeManagement.RequestObjects.RatingRequest;
 import com.API.RecipeManagement.RequestObjects.RecipeRequest;
 import com.API.RecipeManagement.ResponseObjects.RecipeResponse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -42,5 +45,18 @@ public class RecipeService {
         recipeRepo.deleteById(recipeId);
         return "Successfully Deleted The Recipe";
 
+    }
+
+    public ResponseEntity<String> rateRecipe(Integer recipeId, RatingRequest ratingRequest) {
+        Optional<RecipesModel> optionalRecipe = recipeRepo.findById(recipeId);
+        if (optionalRecipe.isPresent()) {
+            RecipesModel recipe = optionalRecipe.get();
+            int rating = ratingRequest.getRating();
+            recipe.setRating(rating);
+            recipeRepo.save(recipe);
+            return ResponseEntity.ok("Successfully Rated The Recipe");
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

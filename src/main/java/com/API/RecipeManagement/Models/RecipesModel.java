@@ -13,6 +13,9 @@ public class RecipesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
 
+     /*
+     * The variable used in the project
+     * */
     Integer id;
     String name;
     @ElementCollection

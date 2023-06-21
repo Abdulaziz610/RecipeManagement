@@ -24,7 +24,6 @@ public class RecipeService {
         newRecipe.setNewDate(new Date());
         newRecipe.setIsActive(Boolean.TRUE);
         recipeRepo.save(newRecipe);
-
         return "Successfully Saved The Recipe";
     }
 

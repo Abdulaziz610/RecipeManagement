@@ -9,7 +9,8 @@ import java.util.List;
 
 @Repository
 public interface RecipeRepo extends JpaRepository<RecipesModel, Integer> {
-
-
+    /*The name of the method
+     * this method is to search for a recipe by there ID
+     * */
     List<RecipesModel> findAllByNameContainingIgnoreCase(String keywords);
 }

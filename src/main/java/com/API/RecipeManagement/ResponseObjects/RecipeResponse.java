@@ -17,6 +17,15 @@ public class RecipeResponse {
     String recipeInstructions;
     Integer recipeCookingTime;
 
+
+    /*
+    *
+    * Response object for retrieving recipe information.
+    *
+    *
+    * */
+
+
     public static RecipeResponse convertToResponse(RecipesModel entity) {
         return RecipeResponse.builder()
                 .id(entity.getId())

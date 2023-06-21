@@ -18,6 +18,12 @@ public class RecipeRequest {
     String recipeInstructions;
     Integer recipeCookingTime;
 
+    /*
+    *
+    * Request object for creating a recipe
+    * It contains fields representing the recipe's name, ingredients, instructions, and cooking time.
+    *
+    * */
 
     public static RecipesModel convertToEntity(RecipesModel entity, RecipeRequest requestForRecipe) {
         entity.setName(requestForRecipe.getRecipeName());

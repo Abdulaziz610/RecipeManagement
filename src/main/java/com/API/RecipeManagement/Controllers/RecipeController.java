@@ -24,7 +24,6 @@ public class RecipeController {
     @Autowired
     RecipeRepo recipeRepo;
 
-
     /*
      * Post Request: For the recipe:
      * Name, ingredients, instructions, cooking_time
@@ -41,20 +40,15 @@ public class RecipeController {
         return recipeService.getRecipeById(idOfRecipe);
     }
 
-
-
     /*
      * Update the recipe for any change
      * */
-
     @PutMapping("/api/recipes/{recipeId}")
     public ResponseEntity<String> updateRecipe(@PathVariable Integer recipeId, @RequestBody RecipeRequest recipeRequest) {
         RecipesModel existingRecipe = recipeRepo.findById(recipeId)
                 .orElseThrow(() -> new IllegalArgumentException("Recipe not found with id: " + recipeId));
-
         existingRecipe = RecipeRequest.convertToEntity(existingRecipe, recipeRequest);
         existingRecipe.setUpdateDate(new Date());
-
         recipeRepo.save(existingRecipe);
         return ResponseEntity.ok("Successfully Updated The Recipe");
     }

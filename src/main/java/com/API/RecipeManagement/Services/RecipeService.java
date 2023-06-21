@@ -21,6 +21,15 @@ public class RecipeService {
     @Autowired
     RecipeRepo recipeRepo;
 
+
+
+    /*
+    *
+    * Saves a new recipe based on the provided recipe request.
+    * Creates a new RecipesModel object.
+    * Returns a success message upon successful saving.
+    *
+    * */
     public String savingRecipe(RecipeRequest recipeRequest) {
         RecipesModel newRecipe = new RecipesModel();
         newRecipe = RecipeRequest.convertToEntity(newRecipe, recipeRequest);
@@ -30,9 +39,18 @@ public class RecipeService {
         return "Successfully Saved The Recipe";
     }
 
+
+    /*
+    * Getting the recipes by ID
+    * */
     public RecipeResponse getRecipeById(Integer idOfRecipe) {
         return RecipeResponse.convertToResponse(recipeRepo.findById(idOfRecipe).get());
     }
+
+
+    /*
+    * Search for a recipe by a keywords
+    * */
 
     public List<RecipeResponse> searchRecipesByKeywords(String keywords) {
         List<RecipesModel> matchingRecipes = recipeRepo.findAllByNameContainingIgnoreCase(keywords);
@@ -41,11 +59,24 @@ public class RecipeService {
                 .collect(Collectors.toList());
     }
 
+
+    /*
+    *
+    * Delete a recipe by ID
+    * Returns a success message upon successful delete.
+    * */
     public String deleteRecipe(Integer recipeId) {
         recipeRepo.deleteById(recipeId);
         return "Successfully Deleted The Recipe";
 
     }
+
+
+    /*
+    *
+    * Rates a recipe identified by the given recipe ID based on the provided rating request.
+    * Returns a success message upon successful Rated recipe.
+    * */
 
     public ResponseEntity<String> rateRecipe(Integer recipeId, RatingRequest ratingRequest) {
         Optional<RecipesModel> optionalRecipe = recipeRepo.findById(recipeId);

@@ -38,8 +38,10 @@ public class RecipeService {
                 .map(RecipeResponse::convertToResponse)
                 .collect(Collectors.toList());
     }
+
     public String deleteRecipe(Integer recipeId) {
         recipeRepo.deleteById(recipeId);
         return "Successfully Deleted The Recipe";
+
     }
 }

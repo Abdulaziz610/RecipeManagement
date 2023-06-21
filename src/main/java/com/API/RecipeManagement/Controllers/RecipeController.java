@@ -22,17 +22,29 @@ public class RecipeController {
     RecipeService recipeService;
     @Autowired
     RecipeRepo recipeRepo;
+
+
+    /*
+     * Post Request: For the recipe:
+     * Name, ingredients, instructions, cooking_time
+     *
+     * */
     @PostMapping(value = "/api/recipes")
     public String savingRecipe(@RequestBody RecipeRequest recipeRequest) {
         recipeService.savingRecipe(recipeRequest);
         return "Successfully Saved The Recipe";
     }
 
-
     @GetMapping(value = "/api/recipes")
     public RecipeResponse getRecipeById(@RequestParam Integer idOfRecipe) {
         return recipeService.getRecipeById(idOfRecipe);
     }
+
+
+
+    /*
+     * Update the recipe for any change
+     * */
 
     @PutMapping("/api/recipes/{recipeId}")
     public ResponseEntity<String> updateRecipe(@PathVariable Integer recipeId, @RequestBody RecipeRequest recipeRequest) {
@@ -47,6 +59,9 @@ public class RecipeController {
     }
 
 
+    /*
+     * Search for a recipe by a keyword
+     * */
     @GetMapping("/api/recipes/search")
     public Map<String, List<RecipeResponse>> searchRecipesByKeywords(@RequestParam String keywords) {
         List<RecipeResponse> matchingRecipes = recipeService.searchRecipesByKeywords(keywords);
@@ -55,7 +70,9 @@ public class RecipeController {
         return response;
     }
 
-
+    /*
+     * Delete the recipe by the ID
+     * */
     @DeleteMapping("/api/recipes/{recipeId}")
     public String deleteRecipe(@PathVariable Integer recipeId) {
         recipeService.deleteRecipe(recipeId);
